@@ -1,0 +1,269 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- Color Palette Variables --- */
+        :root {
+            --purple-dark: #3b1c6e;
+            --purple-main: #512da8;
+            --purple-light: #ece7f7;
+            --gold-main: #ffd700;
+            --gold-hover: #e6c200;
+            --white: #ffffff;
+            --bg-light: #f8f6fc;
+            --text-dark: #2d263b;
+        }
+
+        /* --- Global Setup --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Header Section --- */
+        header {
+            background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-main) 100%);
+            color: var(--white);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--gold-main);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header h1 span {
+            color: var(--gold-main);
+        }
+
+        header p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* --- Content Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--purple-dark);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--gold-main);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* --- Dashboards / Grid Layouts --- */
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* --- Interactive Student Buttons/Cards --- */
+        .hub-card {
+            background-color: var(--white);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 6px 15px rgba(81, 45, 168, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover animations and interactive pop effects */
+        .hub-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-main);
+            box-shadow: 0 12px 24px rgba(81, 45, 168, 0.15);
+            background-color: var(--purple-light);
+        }
+
+        /* Decorative gold slide-up bar on hover */
+        .hub-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: var(--gold-main);
+            transition: height 0.3s ease;
+            z-index: 1;
+        }
+
+        .hub-card:hover::before {
+            height: 6px;
+        }
+
+        /* Card Content Styles */
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            background-color: var(--purple-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .hub-card:hover .icon-container {
+            background-color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .icon-container i {
+            font-size: 2.2rem;
+            color: var(--purple-main);
+        }
+
+        .hub-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple-dark);
+            margin-bottom: 10px;
+        }
+
+        .hub-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--purple-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: auto;
+            border-top: 3px solid var(--gold-main);
+        }
+
+        /* --- Responsive Tweaks for Smaller Screens --- */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            .hub-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Digital Learning <span>Hub</span></h1>
+        <p>Select your course or year group below to get started!</p>
+    </header>
+
+    <div class="container">
+        
+        <h3 class="section-title">KS3 Computing</h3>
+        <div class="hub-grid">
+            
+            <a href="year7.html" class="hub-card">
+                <div class="icon-container">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h2>Year 7</h2>
+                <p>Start your journey! Digital literacy, basic scratch coding, and e-safety.</p>
+            </a>
+
+            <a href="year8.html" class="hub-card">
+                <div class="icon-container">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h2>Year 8</h2>
+                <p>Level up! Micro:bits, spreadsheet modeling, and web design logic.</p>
+            </a>
+
+            <a href="year9.html" class="hub-card">
+                <div class="icon-container">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h2>Year 9</h2>
+                <p>Get ready for KS4! Python essentials, networks, and cyber security basics.</p>
+            </a>
+
+        </div>
+
+        <h3 class="section-title">KS4 Pathways</h3>
+        <div class="hub-grid" style="max-width: 800px; margin: 0 auto 50px auto;">
+            
+            <a href="dit.html" class="hub-card">
+                <div class="icon-container">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <h2>DIT</h2>
+                <p>Digital Information Technology: Data manipulation, user interfaces, and cyber trends.</p>
+            </a>
+
+            <a href="computing.html" class="hub-card">
+                <div class="icon-container">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <h2>Computing</h2>
+                <p>Computer Science GCSE: Algorithm optimization, binary logic, and advanced code structure.</p>
+            </a>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Computing Department. Powered by passion and code.</p>
+    </footer>
+
+</body>
+</html>
